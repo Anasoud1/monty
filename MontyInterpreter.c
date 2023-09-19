@@ -1,17 +1,27 @@
 #include "monty.h"
 
-void print_usage()
+/**
+ * print_usage - prints the syntax of launching monty
+ * Return: void (NOTHING)
+ */
+void print_usage(void)
 {
 	printf("USAGE: monty file\n");
 }
 
+/**
+ * main - Entry point of monty
+ * @ac: number of arguments
+ * @av: list of arguments
+ * Return: int (SUCCESS or FAILURE)
+ */
 int main(int ac, char **av)
 {
-	FILE * fp;
+	FILE *fp;
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t read;
-	
+
 	if (ac != 2)
 	{
 		print_usage();
@@ -24,12 +34,12 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 	while ((read = getline(&line, &len, fp)) != -1)
-	{	
+	{
 		printf("Retrieved line of length %zu:\n", read);
-        	printf("%s", line);
+		printf("%s", line);
 	}
 	fclose(fp);
 	if (line)
 		free(line);
-	return 0;
+	return (0);
 }
