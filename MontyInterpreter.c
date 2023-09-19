@@ -25,7 +25,7 @@ int main(int ac, char **av)
 	if (ac != 2)
 	{
 		print_usage();
-		exit(EXIT_FAILURE°;
+		exit(EXIT_FAILURE);
 	}
 	fp = fopen(av[1], "r");
 	if (fp == NULL)
@@ -35,8 +35,7 @@ int main(int ac, char **av)
 	}
 	while ((read = getline(&line, &len, fp)) != -1)
 	{
-		printf("Retrieved line of length %zu:\n", read);
-		printf("%s", line);
+		parse_line(line);
 	}
 	fclose(fp);
 	if (line)
