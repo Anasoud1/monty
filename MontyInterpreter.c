@@ -1,0 +1,35 @@
+#include "monty.h"
+
+void print_usage()
+{
+	printf("USAGE: monty file\n");
+}
+
+int main(int ac, char **av)
+{
+	FILE * fp;
+	char *line = NULL;
+	size_t len = 0;
+	ssize_t read;
+	
+	if (ac != 2)
+	{
+		print_usage();
+		exit(EXIT_FAILURE°;
+	}
+	fp = fopen(av[1], "r");
+	if (fp == NULL)
+	{
+		printf("Error: Can't open file %s\n", av[1]);
+		exit(EXIT_FAILURE);
+	}
+	while ((read = getline(&line, &len, fp)) != -1)
+	{	
+		printf("Retrieved line of length %zu:\n", read);
+        	printf("%s", line);
+	}
+	fclose(fp);
+	if (line)
+		free(line);
+	return 0;
+}
