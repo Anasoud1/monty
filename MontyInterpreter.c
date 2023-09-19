@@ -1,5 +1,7 @@
 #include "monty.h"
 
+stack_t *top = NULL;
+
 /**
  * print_usage - prints the syntax of launching monty
  * Return: void (NOTHING)
