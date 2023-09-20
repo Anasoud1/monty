@@ -12,7 +12,7 @@ void push_item(stack_t **top, int data)
 
 	tmp = malloc(sizeof(stack_t));
 	if (!tmp)
-		printf("stack overflow\n"), exit(1);
+		printf("Error: malloc failed\n"), exit("EXIT_FAILURE");
 	tmp->n = data;
 	tmp->next = *top;
 
