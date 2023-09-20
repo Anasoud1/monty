@@ -45,5 +45,6 @@ void error_msg(int number_err, unsigned int line_number, stack_t *stack);
 int is_number(char *s);
 int remove_leading(char *str);
 void free_list(stack_t *head);
+void print_top(stack_t **top, unsigned int ln);
 
 #endif

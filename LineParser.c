@@ -1,9 +1,22 @@
 #include "monty.h"
 
 /**
+ * print_top - prints the value a the top of the stack
+ * @top: pointer to the top of the stack
+ * @ln: line number
+ */
+void print_top(stack_t **top, unsigned int ln)
+{
+	if (top == NULL || *top == NULL)
+		error_msg(6, ln, *top);
+	printf("%d\n", (*top)->n);
+}
+
+/**
  * push_item - pushes a new item to the top of the stack
  * @top: top of the stack
  * @data: new item to be pushed to the stack
+ * @line: line
  * Return: void (NOTHING)
  */
 void push_item(stack_t **top, int data, char *line)
@@ -61,6 +74,7 @@ int parse_execute_line(char *line, stack_t **top, unsigned int ln, FILE *fp)
 	void (*f)(stack_t **top, unsigned int ln);
 	instruction_t instructions[] = {
 		{"pall", print_all},
+		{"pint", print_top},
 		{NULL, NULL}
 	};
 

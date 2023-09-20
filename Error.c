@@ -32,5 +32,10 @@ void error_msg(int number_err, unsigned int line_number, stack_t *stack)
 			fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 			free_list(stack);
 			exit(EXIT_FAILURE);
+		case 6:
+			fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+			exit(EXIT_FAILURE);
+		default:
+			break;
 	}
 }
