@@ -6,13 +6,17 @@
  * @data: new item to be pushed to the stack
  * Return: void (NOTHING)
  */
-void push_item(stack_t **top, int data)
+void push_item(stack_t **top, int data, char *line)
 {
 	stack_t *tmp;
 
 	tmp = malloc(sizeof(stack_t));
 	if (!tmp)
+	{
+		free(line);
+		free_list(*top);
 		fprintf(stderr, "Error: malloc failed\n"), exit(EXIT_FAILURE);
+	}
 	tmp->n = data;
 	tmp->next = *top;
 
@@ -65,11 +69,17 @@ int parse_execute_line(char *line, stack_t **top, unsigned int ln, FILE *fp)
 	{
 		arg = strtok(NULL, " \n");
 		if (!arg)
+		{
+			free(line);
 			error_msg(1, ln, *top);
+		}
 		if (is_number(arg))
-			push_item(top, atoi(arg));
+			push_item(top, atoi(arg), line);
 		else
+		{
+			free(line);
 			error_msg(1, ln, *top);
+		}
 		return (0);
 	}
 

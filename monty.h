@@ -39,7 +39,7 @@ typedef struct instruction_s
 } instruction_t;
 
 int parse_execute_line(char *line, stack_t **top, unsigned int ln, FILE *fp);
-void push_item(stack_t **top, int data);
+void push_item(stack_t **top, int data, char *line);
 void print_all(stack_t **top, unsigned int ln);
 void error_msg(int number_err, unsigned int line_number, stack_t *stack);
 int is_number(char *s);
