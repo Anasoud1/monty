@@ -12,7 +12,7 @@ void push_item(stack_t **top, int data)
 
 	tmp = malloc(sizeof(stack_t));
 	if (!tmp)
-		printf("Error: malloc failed\n"), exit(EXIT_FAILURE);
+		fprintf(stderr, "Error: malloc failed\n"), exit(EXIT_FAILURE);
 	tmp->n = data;
 	tmp->next = *top;
 

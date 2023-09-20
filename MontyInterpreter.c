@@ -31,7 +31,7 @@ int main(int ac, char **av)
 	fp = fopen(av[1], "r");
 	if (fp == NULL)
 	{
-		printf("Error: Can't open file %s\n", av[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
 	while ((read = getline(&line, &len, fp)) != -1)
