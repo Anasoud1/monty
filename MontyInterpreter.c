@@ -38,6 +38,7 @@ int main(int ac, char **av)
 	while ((read = getline(&line, &len, fp)) != -1)
 	{
 		parse_line(line);
+		free(line);
 	}
 	fclose(fp);
 	if (line)
