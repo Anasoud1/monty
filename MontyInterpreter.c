@@ -42,7 +42,7 @@ int main(int ac, char **av)
 			free(line);
 			continue;
 		}
-		parse_execute_line(&line[i], &top, ln, fp);
+		parse_execute_line(line, &top, ln, fp);
 		/*free(line);*/
 		line = NULL;
 		ln++;
