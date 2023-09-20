@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <string.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -23,8 +24,6 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
-extern stack_t *top;
-
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -39,8 +38,11 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int parse_line(char *line);
-void push(int data);
-void print_all(void);
+int parse_execute_line(char *line, stack_t **top, unsigned int ln);
+void push_item(stack_t **top, int data);
+void print_all(stack_t **top, unsigned int ln);
+void error_msg(int number_err, unsigned int line_number, stack_t *stack);
+int is_number(char *s);
+char *remove_leading(char *str);
 
 #endif

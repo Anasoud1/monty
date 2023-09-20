@@ -2,10 +2,11 @@
 
 /**
  * push - pushes a new item to the top of the stack
+ * @top: top of the stack
  * @data: new item to be pushed to the stack
  * Return: void (NOTHING)
  */
-void push(int data)
+void push_item(stack_t **top, int data)
 {
 	stack_t *tmp;
 
@@ -13,60 +14,72 @@ void push(int data)
 	if (!tmp)
 		printf("stack overflow\n"), exit(1);
 	tmp->n = data;
-	tmp->next = top;
+	tmp->next = *top;
 
-	if (top)
-		top->prev = tmp;
+	if (*top)
+		(*top)->prev = tmp;
 
-	top = tmp;
-	top->prev = NULL;
+	*top = tmp;
+	(*top)->prev = NULL;
 }
 
 /**
  * print_all - prints all the stack
+ * @top: top of the stack
  * Return: void (NOTHING)
  */
-void print_all(void)
+void print_all(stack_t **top, unsigned int ln)
 {
-	stack_t *curr = top;
+	stack_t *cur = *top;
 
-	while (curr)
+	(void)ln;
+
+	while (cur)
 	{
-		printf("%d\n", curr->n);
-		curr = curr->next;
+		printf("%d\n", cur->n);
+		cur = cur->next;
 	}
 }
 
 /**
  * parse_line - parses a line
+ * @top: top of the stack
  * @line: current line to be parsed
  * Return: int
  */
-int parse_line(char *line)
+int parse_execute_line(char *line, stack_t **top, unsigned int ln)
 {
-	int ret = 0;
+	int i = 0;
 	char *opcode, *arg;
+	void (*f)(stack_t **top, unsigned int ln);
+	instruction_t instructions[] = {
+		{"pall", print_all},
+		{NULL, NULL}
+	};
 
 	opcode = strtok(line, " \n");
+        if (strcmp(opcode, "push") == 0)
+        {
+                arg = strtok(NULL, " \n");
+		if (!arg)
+			error_msg(1, ln, *top);
+		if (is_number(arg))
+			push_item(top, atoi(arg));
+                else
+                        error_msg(1, ln, *top);
+		return (0);
+        }
 
-	if (strcmp(opcode, "push") == 0)
+	while (instructions[i].opcode)
 	{
-		arg = strtok(NULL, " ");
-		push(atoi(arg));
-		/*
-		printf("opcode = %s\n", opcode);
-		printf("arg = %s\n", arg);
-		*/
+		if (strcmp(instructions[i].opcode, opcode) == 0)
+		{
+			f = instructions[i].f;
+			f(top, ln);
+			return(0);
+		}
+		i++;
 	}
-	else if (strcmp(opcode, "pall") == 0)
-	{
-		print_all();
-		/*printf("opcode = %s\n", opcode);*/
-	}
-	else
-	{
-		printf("unknown instruction %s", opcode);
-		ret = -1;
-	}
-	return (ret);
+	fprintf(stderr, "L%d: unknown instruction %s\n",ln, opcode);
+	exit(EXIT_FAILURE);
 }
