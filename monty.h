@@ -46,5 +46,6 @@ int is_number(char *s);
 int remove_leading(char *str);
 void free_list(stack_t *head);
 void print_top(stack_t **top, unsigned int ln);
+void pop_top(stack_t **stack, unsigned int line_number);
 
 #endif

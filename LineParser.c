@@ -1,6 +1,25 @@
 #include "monty.h"
 
 /**
+ * pop_top - removes the top of the stack
+ * @top: pointer to the top of the stack
+ * @ln: line number
+ */
+void pop_top(stack_t **top, unsigned int ln)
+{
+	stack_t *tmp;
+
+	if (top == NULL || *top == NULL)
+		error_msg(7, ln, *top);
+
+	tmp = *top;
+	*top = tmp->next;
+	if (*top != NULL)
+		(*top)->prev = NULL;
+	free(tmp);
+}
+
+/**
  * print_top - prints the value a the top of the stack
  * @top: pointer to the top of the stack
  * @ln: line number
