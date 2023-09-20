@@ -39,10 +39,12 @@ int main(int ac, char **av)
 		line = remove_leading(line);
 		if (line[0] == '\n')
 			continue;
-		/*printf("%d = <%s>\n",ln ,line);*/
-		parse_execute_line(line, &top, ln);
+		parse_execute_line(line, &top, ln, fp);
+		free(line);
+		line = NULL;
 		ln++;
 	}
 	fclose(fp);
+	free_list(top);
 	return (0);
 }

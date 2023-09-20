@@ -38,11 +38,12 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int parse_execute_line(char *line, stack_t **top, unsigned int ln);
+int parse_execute_line(char *line, stack_t **top, unsigned int ln, FILE *fp);
 void push_item(stack_t **top, int data);
 void print_all(stack_t **top, unsigned int ln);
 void error_msg(int number_err, unsigned int line_number, stack_t *stack);
 int is_number(char *s);
 char *remove_leading(char *str);
+void free_list(stack_t *head);
 
 #endif

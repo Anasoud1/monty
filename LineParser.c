@@ -49,7 +49,7 @@ void print_all(stack_t **top, unsigned int ln)
  * @ln: line number
  * Return: int
  */
-int parse_execute_line(char *line, stack_t **top, unsigned int ln)
+int parse_execute_line(char *line, stack_t **top, unsigned int ln, FILE *fp)
 {
 	int i = 0;
 	char *opcode, *arg;
@@ -83,5 +83,8 @@ int parse_execute_line(char *line, stack_t **top, unsigned int ln)
 		i++;
 	}
 	fprintf(stderr, "L%d: unknown instruction %s\n", ln, opcode);
+	free(line);
+	free_list(*top);
+	fclose(fp);
 	exit(EXIT_FAILURE);
 }
