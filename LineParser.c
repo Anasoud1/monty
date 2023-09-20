@@ -94,6 +94,7 @@ int parse_execute_line(char *line, stack_t **top, unsigned int ln, FILE *fp)
 	instruction_t instructions[] = {
 		{"pall", print_all},
 		{"pint", print_top},
+		{"pop", pop_top},
 		{NULL, NULL}
 	};
 
