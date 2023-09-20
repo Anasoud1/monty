@@ -43,11 +43,12 @@ int main(int ac, char **av)
 			continue;
 		}
 		parse_execute_line(line, &top, ln, fp);
-		/*free(line);*/
+		free(line);
 		line = NULL;
 		ln++;
 	}
 	fclose(fp);
-	/*free_list(top);*/
+	free(line);
+	free_list(top);
 	return (0);
 }
