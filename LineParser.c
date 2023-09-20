@@ -47,6 +47,7 @@ void print_all(stack_t **top, unsigned int ln)
  * @top: top of the stack
  * @line: current line to be parsed
  * @ln: line number
+ * @fp: file descriptor
  * Return: int
  */
 int parse_execute_line(char *line, stack_t **top, unsigned int ln, FILE *fp)
