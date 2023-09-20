@@ -26,11 +26,13 @@ int is_number(char *s)
  * @str: string input
  * Return: new string pointer
  */
-char *remove_leading(char *str)
+int remove_leading(char *str)
 {
-	while (*str == ' ' || *str == '\t')
+	int i = 0;
+
+	while (str[i] == ' ' || str[i] == '\t')
 	{
-		str++;
+		i++;
 	}
-	return (str);
+	return (i);
 }

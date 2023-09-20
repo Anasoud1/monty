@@ -18,7 +18,7 @@ void print_usage(void)
  */
 int main(int ac, char **av)
 {
-	int ln = 1;
+	int ln = 1, indx = 0;
 	FILE *fp;
 	char *line = NULL;
 	size_t len = 0;
@@ -36,15 +36,18 @@ int main(int ac, char **av)
 	}
 	while ((read = getline(&line, &len, fp)) != -1)
 	{
-		line = remove_leading(line);
-		if (line[0] == '\n')
+		indx = remove_leading(line);
+		if (line[indx] == '\n')
+		{
+			free(line);
 			continue;
-		parse_execute_line(line, &top, ln, fp);
-		free(line);
+		}
+		parse_execute_line(&line[i], &top, ln, fp);
+		/*free(line);*/
 		line = NULL;
 		ln++;
 	}
 	fclose(fp);
-	free_list(top);
+	/*free_list(top);*/
 	return (0);
 }
