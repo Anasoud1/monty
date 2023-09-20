@@ -48,7 +48,8 @@ int main(int ac, char **av)
 		ln++;
 	}
 	fclose(fp);
-	free(line);
+	if (line)
+		free(line);
 	free_list(top);
 	return (0);
 }
