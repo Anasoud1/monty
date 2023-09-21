@@ -60,7 +60,7 @@ void pchar_top_item(stack_t  **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
 		error_msg2(14, line_number, *stack);
-	if ((*stack)->n < 0 && (*stack)->n > 127)
+	if ((*stack)->n < 0 || (*stack)->n > 127)
 		error_msg2(13, line_number, *stack);
 	printf("%c\n", (*stack)->n);
 }
