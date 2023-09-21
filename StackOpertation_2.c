@@ -64,3 +64,18 @@ void pchar_top_item(stack_t  **stack, unsigned int line_number)
 		error_msg2(13, line_number, *stack);
 	printf("%c\n", (*stack)->n);
 }
+
+void pstr_items(stack_t  **stack, unsigned int line_number)
+{
+	stack_t *curr = *stack;
+	(void) line_number;
+
+	while (curr)
+	{
+		if (curr->n <= 0 || curr->n > 127)
+			break;
+		printf("%c", curr->n);
+		curr = curr->next;
+	}
+	printf("\n");
+}
