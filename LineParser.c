@@ -102,8 +102,9 @@ int parse_execute_line(char *line, stack_t **top, unsigned int ln, FILE *fp)
 		{"mod", mod_top_items},
 		{NULL, NULL}
 	};
-
 	opcode = strtok(line, " \n");
+	if (opcode[0] == '#')
+		return (0);
 	if (parse_execute_push(opcode, ln, top, line))
 		return (0);
 	if (parse_execute_instructions(instructions, opcode, top, ln))
