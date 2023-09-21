@@ -97,6 +97,7 @@ int parse_execute_line(char *line, stack_t **top, unsigned int ln, FILE *fp)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub_top_items},
+		{"div", div_top_items},
 		{NULL, NULL}
 	};
 
