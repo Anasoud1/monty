@@ -75,7 +75,7 @@ void nop(stack_t  **stack, unsigned int line_number)
 void sub_top_items(stack_t  **stack, unsigned int line_number)
 {
 	stack_t *tmp, *curr = *stack;
-	int i = 0;
+	int i = 0, sum = 0;
 
 	while (curr)
 	{
@@ -84,9 +84,10 @@ void sub_top_items(stack_t  **stack, unsigned int line_number)
 	}
 	if (i < 2)
 		error_msg(5, line_number, *stack);
-	tmp = (*stack)->next;
-	(*stack)->n -= (*stack)->prev->n;
-	(*stack)->next = tmp->next;
-	tmp->prev = *stack;
-	free(tmp);
+
+	(*stack) = (*stack)->next;
+	sum = (*stack)->n - (*stack)->prev->n;
+	(*stack)->n = sum;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
 }
