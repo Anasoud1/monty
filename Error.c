@@ -38,6 +38,9 @@ void error_msg(int number_err, unsigned int line_number, stack_t *stack)
 		case 7:
 			fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 			exit(EXIT_FAILURE);
+		case 8:
+                        fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+                        exit(EXIT_FAILURE);
 		default:
 			break;
 	}

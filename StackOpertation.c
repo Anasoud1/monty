@@ -83,7 +83,7 @@ void sub_top_items(stack_t  **stack, unsigned int line_number)
 		curr = curr->next;
 	}
 	if (i < 2)
-		error_msg(5, line_number, *stack);
+		error_msg(8, line_number, *stack);
 
 	(*stack) = (*stack)->next;
 	sum = (*stack)->n - (*stack)->prev->n;
