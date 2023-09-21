@@ -117,5 +117,5 @@ void div_top_items(stack_t  **stack, unsigned int line_number)
 	div = (*stack)->n / tmp->n;
 	(*stack)->n = div;
 	(*stack)->prev = NULL;
-	free(tmp)
+	free(tmp);
 }
