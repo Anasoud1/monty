@@ -55,6 +55,7 @@ int parse_execute_push(char *opcode, unsigned int ln, stack_t **top,
 		char *line);
 int parse_execute_instructions(instruction_t *instructions, char *opcode,
 		stack_t **top, unsigned int ln);
-
+void error_msg2(int number_err, unsigned int line_number, stack_t *stack);
+void div_top_items(stack_t  **stack, unsigned int line_number);
 
 #endif
