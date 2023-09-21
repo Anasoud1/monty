@@ -12,7 +12,7 @@
 int parse_execute_push(char *opcode, unsigned int ln, stack_t **top,
 			char *line)
 {
-	char *arg;
+	char *arg = NULL;
 
 	if (strcmp(opcode, "push") == 0)
 	{

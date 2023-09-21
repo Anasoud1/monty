@@ -39,15 +39,17 @@ int main(int ac, char **av)
 		indx = remove_leading(line);
 		if (line[indx] == '\n')
 		{
-			free(line);
+			ln++;
 			continue;
 		}
 		parse_execute_line(line, &top, ln, fp);
-		free(line);
+		if (line)
+			free(line);
 		line = NULL;
 		ln++;
 	}
 	fclose(fp);
+
 	if (line)
 		free(line);
 	free_list(top);
