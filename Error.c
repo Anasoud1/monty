@@ -59,6 +59,9 @@ void error_msg2(int number_err, unsigned int line_number, stack_t *stack)
 		case 11:
 			fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 			exit(EXIT_FAILURE);
+		case 12:
+			fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+			exit(EXIT_FAILURE);
 		default:
 			break;
 	}
