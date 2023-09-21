@@ -56,6 +56,12 @@ void mod_top_items(stack_t  **stack, unsigned int line_number)
 	(*stack)->prev = NULL;
 }
 
+/**
+ * pchar_top_item - prints the char at the top of the stack
+ * @stack: top of the stack
+ * @line_number: line number
+ * Return: void (NOTHING)
+ */
 void pchar_top_item(stack_t  **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
@@ -65,6 +71,12 @@ void pchar_top_item(stack_t  **stack, unsigned int line_number)
 	printf("%c\n", (*stack)->n);
 }
 
+/**
+ * pstr_items - prints the string
+ * @stack: top of the stack
+ * @line_number: line number
+ * Return: void (NOTHING)
+ */
 void pstr_items(stack_t  **stack, unsigned int line_number)
 {
 	stack_t *curr = *stack;
@@ -80,6 +92,12 @@ void pstr_items(stack_t  **stack, unsigned int line_number)
 	printf("\n");
 }
 
+/**
+ * rotl - rotl
+ * @stack: top of the stack
+ * @line_number: line number
+ * Return: void (NOTHING)
+ */
 void rotl(stack_t  **stack, unsigned int line_number)
 {
 	stack_t *curr = *stack, *tmp = *stack;

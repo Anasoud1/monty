@@ -45,6 +45,14 @@ void error_msg(int number_err, unsigned int line_number, stack_t *stack)
 			break;
 	}
 }
+
+/**
+ * error_msg2 - prints an error message
+ * @number_err: error id
+ * @line_number: line number
+ * @stack: pointer to the stack
+ * Return: void (NOTHING)
+ */
 void error_msg2(int number_err, unsigned int line_number, stack_t *stack)
 {
 	(void)stack;
