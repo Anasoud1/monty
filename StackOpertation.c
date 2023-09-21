@@ -101,7 +101,7 @@ void sub_top_items(stack_t  **stack, unsigned int line_number)
  */
 void div_top_items(stack_t  **stack, unsigned int line_number)
 {
-	stack_t *tmp = *stack, *curr = *stack;
+	stack_t *curr = *stack;
 	int i = 0, div = 0;
 
 	while (curr)
@@ -111,11 +111,11 @@ void div_top_items(stack_t  **stack, unsigned int line_number)
 	}
 	if (i < 2)
 		error_msg2(9, line_number, *stack);
-	if (tmp->n == 0)
+	if (((*stack)->n) == 0)
 		error_msg2(10, line_number, *stack);
 	(*stack) = (*stack)->next;
-	div = (*stack)->n / tmp->n;
+	div = (*stack)->n % (*stack)->prev->n;
 	(*stack)->n = div;
+	free((*stack)->prev);
 	(*stack)->prev = NULL;
-	free(tmp);
 }
