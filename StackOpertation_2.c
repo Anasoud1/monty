@@ -50,8 +50,8 @@ void mod_top_items(stack_t  **stack, unsigned int line_number)
 	if (((*stack)->n) == 0)
 		error_msg2(10, line_number, *stack);
 	(*stack) = (*stack)->next;
-	mul = (*stack)->n % (*stack)->prev->n;
-	(*stack)->n = mul;
+	mod = (*stack)->n % (*stack)->prev->n;
+	(*stack)->n = mod;
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
 }

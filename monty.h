@@ -58,5 +58,6 @@ int parse_execute_instructions(instruction_t *instructions, char *opcode,
 void error_msg2(int number_err, unsigned int line_number, stack_t *stack);
 void div_top_items(stack_t  **stack, unsigned int line_number);
 void mul_top_items(stack_t  **stack, unsigned int line_number);
+void mod_top_items(stack_t  **stack, unsigned int line_number);
 
 #endif
