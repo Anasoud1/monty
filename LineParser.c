@@ -103,6 +103,7 @@ int parse_execute_line(char *line, stack_t **top, unsigned int ln, FILE *fp)
 		{"pchar", pchar_top_item},
 		{"pstr", pstr_items},
 		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 	};
 	opcode = strtok(line, " \n");
