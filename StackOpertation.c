@@ -113,8 +113,8 @@ void div_top_items(stack_t  **stack, unsigned int line_number)
 		error_msg2(9, line_number, *stack);
 	if (((*stack)->n) == 0)
 		error_msg2(10, line_number, *stack);
+	div = (*stack)->next->n / (*stack)->n;
 	(*stack) = (*stack)->next;
-	div = (*stack)->n / (*stack)->prev->n;
 	(*stack)->n = div;
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
