@@ -51,5 +51,10 @@ void swap(stack_t  **stack, unsigned int line_number);
 void add(stack_t  **stack, unsigned int line_number);
 void nop(stack_t  **stack, unsigned int line_number);
 void sub_top_items(stack_t  **stack, unsigned int line_number);
+int parse_execute_push(char *opcode, unsigned int ln, stack_t **top,
+		char *line);
+int parse_execute_instructions(instruction_t *instructions, char *opcode,
+		stack_t **top, unsigned int ln);
+
 
 #endif

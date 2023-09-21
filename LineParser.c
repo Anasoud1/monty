@@ -88,9 +88,7 @@ void print_all(stack_t **top, unsigned int ln)
  */
 int parse_execute_line(char *line, stack_t **top, unsigned int ln, FILE *fp)
 {
-	int i = 0;
-	char *opcode, *arg;
-	void (*f)(stack_t **top, unsigned int ln);
+	char *opcode;
 	instruction_t instructions[] = {
 		{"pall", print_all},
 		{"pint", print_top},
@@ -103,34 +101,10 @@ int parse_execute_line(char *line, stack_t **top, unsigned int ln, FILE *fp)
 	};
 
 	opcode = strtok(line, " \n");
-	if (strcmp(opcode, "push") == 0)
-	{
-		arg = strtok(NULL, " \n");
-		if (!arg)
-		{
-			free(line);
-			error_msg(1, ln, *top);
-		}
-		if (is_number(arg))
-			push_item(top, atoi(arg), line);
-		else
-		{
-			free(line);
-			error_msg(1, ln, *top);
-		}
+	if (parse_execute_push(opcode, ln, top, line))
 		return (0);
-	}
-
-	while (instructions[i].opcode)
-	{
-		if (strcmp(instructions[i].opcode, opcode) == 0)
-		{
-			f = instructions[i].f;
-			f(top, ln);
-			return (0);
-		}
-		i++;
-	}
+	if (parse_execute_instructions(instructions, opcode, top, ln))
+		return (0);
 	fprintf(stderr, "L%d: unknown instruction %s\n", ln, opcode);
 	free(line);
 	free_list(*top);

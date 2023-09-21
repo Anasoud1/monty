@@ -57,6 +57,8 @@ void add(stack_t  **stack, unsigned int line_number)
 
 /**
  * nop - fucntion doesn't do anything
+ * @stack: top of the stack
+ * @line_number: line number
  * Return: void(nothing)
  */
 void nop(stack_t  **stack, unsigned int line_number)
