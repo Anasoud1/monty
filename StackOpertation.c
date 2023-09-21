@@ -85,7 +85,7 @@ void sub_top_items(stack_t  **stack, unsigned int line_number)
 	if (i < 2)
 		error_msg(5, line_number, *stack);
 	tmp = (*stack)->next;
-	(*stack)->n -= (*stack)->next->n;
+	(*stack)->n -= (*stack)->prev->n;
 	(*stack)->next = tmp->next;
 	tmp->prev = *stack;
 	free(tmp);
