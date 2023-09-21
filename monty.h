@@ -50,5 +50,6 @@ void pop_top(stack_t **stack, unsigned int line_number);
 void swap(stack_t  **stack, unsigned int line_number);
 void add(stack_t  **stack, unsigned int line_number);
 void nop(stack_t  **stack, unsigned int line_number);
+void sub_top_items(stack_t  **stack, unsigned int line_number);
 
 #endif

@@ -64,3 +64,29 @@ void nop(stack_t  **stack, unsigned int line_number)
 	(void)stack;
 	(void)line_number;
 }
+
+/**
+ * sub_top_items - adds the top two elements of the stack
+ * @stack: top of the stack
+ * @line_number: line number
+ * Return: void(nothing)
+ */
+
+void sub_top_items(stack_t  **stack, unsigned int line_number)
+{
+	stack_t *tmp, *curr = *stack;
+	int i = 0;
+
+	while (curr)
+	{
+		i++;
+		curr = curr->next;
+	}
+	if (i < 2)
+		error_msg(5, line_number, *stack);
+	tmp = (*stack)->next;
+	(*stack)->n -= (*stack)->next->n;
+	(*stack)->next = tmp->next;
+	tmp->prev = *stack;
+	free(tmp);
+}
