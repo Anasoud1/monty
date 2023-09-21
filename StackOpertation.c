@@ -114,7 +114,7 @@ void div_top_items(stack_t  **stack, unsigned int line_number)
 	if ((*stack)->n == 0)
 		error_msg2(10, line_number, *stack);
 	(*stack) = (*stack)->next;
-	div = ((*stack)->n) / ((*stack)->prev->n);
+	div = (*stack)->prev->n / (*stack)->n;
 	(*stack)->n = div;
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
