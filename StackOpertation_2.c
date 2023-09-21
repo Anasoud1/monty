@@ -79,3 +79,21 @@ void pstr_items(stack_t  **stack, unsigned int line_number)
 	}
 	printf("\n");
 }
+
+void rotl(stack_t  **stack, unsigned int line_number)
+{
+	stack_t *curr = *stack, *tmp = *stack;
+	(void)line_number;
+
+	if (!*stack || !(*stack)->next)
+		return;
+	while (curr->next)
+		curr = curr->next;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	while (curr->next)
+		curr = curr->next;
+	curr->next = tmp;
+	tmp->prev = curr;
+	tmp->next = NULL;
+}
